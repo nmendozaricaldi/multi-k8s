@@ -13,4 +13,10 @@ after_success:
   - docker build -t nmendoza/multi-nginx ./nginx
   - docker build -t nmendoza/multi-server ./server
   - docker build -t nmendoza/multi-worker ./worker
-  #take those images and push to docker hub
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push to docker hub
+  - docker push nmendoza/multi-client
+  - docker push nmendoza/multi-nginx
+  - docker push nmendoza/multi-server
+  - docker push nmendoza/multi-worker
