@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t nmendoza/react-test -f ./client/Dockerfile.dev
+  - docker build -t nmendoza/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true nmendoza/react-test npm test -- --coverage
